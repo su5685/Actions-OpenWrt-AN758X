@@ -9,14 +9,6 @@ on:
         default: 'fiberhome_hg5585f-cu'
         type: choice
         options:
-          - fiberhome_hg5585f-cu
-          - fiberhome_hg5585f-ct
-          - fiberhome_hg5382a
-          - gemtek_xg2010g
-          - nokia_xg-040g-md-ubi
-          - nokia_xg-040g-tf-ubi
-          - unionman_ung00a
-          - znxt_zn504xg-d
           - znxt_zn515xg-d
       repo_branch:
         description: '源码分支（ponwrt 默认分支是 master）'
