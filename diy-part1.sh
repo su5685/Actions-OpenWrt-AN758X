@@ -31,8 +31,8 @@ ADD_TAILSCALE=false    # luci-app-tailscale
 ADD_OPENLIST=false     # luci-app-openlist2（alist/openlist 挂载）
 ADD_SMARTDNS=false     # luci-app-smartdns
 
-ADD_LUCI_APP=false      # qwe3017/luci-app 仓库（monorepo）
-                        #   ├─ luci-app-natmode     NAT 类型三选一（网络 → NAT 类型）
+ADD_LUCI_APP=true     # qwe3017/luci-app 仓库（monorepo）
+    
                         #   └─ luci-app-pon-status  PON 光模块卡片（概览页「系统」下一格）
 
 clone() {  # clone <url> <dir> [branch]
@@ -80,7 +80,7 @@ if [ "$ADD_LUCI_APP" = "true" ]; then
     exit 1
   fi
 
-  for p in luci-app-natmode luci-app-pon-status; do
+  for p in  luci-app-pon-status; do
     if [ ! -f "$LUCI_APP_TMP/$p/Makefile" ]; then
       echo "::error::$LUCI_APP_TMP/$p/Makefile 不存在，包无法被索引"
       exit 1
@@ -191,7 +191,7 @@ if [ "$ADD_AIROHA_NPU" = "true" ] && [ ! -d "$PKG_DIR/luci-app-airoha-npu" ]; th
 fi
 
 # natmode / pon-status 来自 qwe3017/luci-app（config 里也是 =y）
-for p in luci-app-natmode luci-app-pon-status; do
+for p in  luci-app-pon-status; do
   if [ "$ADD_LUCI_APP" = "true" ] && [ ! -d "$PKG_DIR/$p" ]; then
     echo "::error::$p 未拉到，config 里的 =y 会被 defconfig 剔除"
     exit 1
